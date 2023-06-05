@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 class Human(ABC):
     __id = 1
 
-    def __init__(self, name, age):
+    def __init__(self, name: str, age: int):
         self.__name = name
         self.__age = age
         self.__id = Human.__id
@@ -29,9 +29,9 @@ class Human(ABC):
         return self.__name
 
     @name.setter
-    def name(self, new_name):
-        print(f'{self.__name} has changed their name to {new_name}')
-        self.__name = new_name
+    def name(self, new_name: str):
+        if len(new_name) > 0: print(f'{self.__name} has changed their name to {new_name}')
+            self.__name = new_name
 
     @name.deleter
     def name(self):
@@ -43,8 +43,8 @@ class Human(ABC):
 
     @age.setter
     def age(self, increment):
-        self.__age += increment
-        print(f'Happy Birthday {self.__name}! You are now {self.__age}!')
+        if increment >= 1: self.__age += increment
+            print(f'Happy Birthday {self.__name}! You are now {self.__age}!')
 
     @age.deleter
     def age(self):
